@@ -44,19 +44,19 @@ public class Hash {
             table[index].add(new DataPair(key, value));
         }
 
-        public boolean contains(String key, int index){
-            boolean flag = false;
+        public String getValue(String key){
             DataPair pPair;
+            int index = hashFunction(key);
             if(table[index] == null){
-                return flag;
+                return null;
             }
             for(int i = 0; i < table[index].size(); i++){
                 pPair = table[index].get(i);
                 if(pPair.getKey() == key){
-                    return true;
+                    return pPair.getVal();
                 }
             }
-            return flag;
+            return null;
         }
 
         // function to display hash table

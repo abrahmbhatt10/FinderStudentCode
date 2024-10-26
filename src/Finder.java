@@ -40,8 +40,10 @@ public class Finder {
     }
 
     public String query(String key){
-        if((mTable != null) && (mTable.contains(key, mTable.hashFunction(key)))){
-            return
+        if(mTable != null){
+            if(mTable.getValue(key) != null){
+                return mTable.getValue(key);
+            }
         }
         return INVALID;
     }
