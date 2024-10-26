@@ -9,14 +9,13 @@ public class Hash {
         // Number of buckets
         private final int bucket = 1000000;
         // Hash table of size bucket
-        private final ArrayList<String>[] table;
+        private final ArrayList<DataPair>[] table;
         private long p = 54321102419L;
         private int R = 256;
 
         public Hash()
         {
             this.table = new ArrayList[bucket];
-
         }
 
         // Converts to hash
@@ -33,35 +32,41 @@ public class Hash {
             return index;
         }
 
-        public void insertItem(String key)
+        public void insertItem(String key, String value)
         {
             // get the hash index of key
             int index = hashFunction(key);
+
+            if(table[index] == null){
+                table[index] = new ArrayList<DataPair>();
+            }
             // insert key into hash table at that index
-            table[index].add(key);
+            table[index].add(new DataPair(key, value));
         }
 
-        public void deleteItem(String key)
-        {
-            // get the hash index of key
-            int index = hashFunction(key);
-
-            // Check if key is in hash table
-            if (!table[index].contains(key)) {
-                return;
+        public boolean contains(String key, int index){
+            boolean flag = false;
+            DataPair pPair;
+            if(table[index] == null){
+                return flag;
             }
-
-            // delete the key from hash table
-            table[index].remove(Integer.valueOf(key));
+            for(int i = 0; i < table[index].size(); i++){
+                pPair = table[index].get(i);
+                if(pPair.getKey() == key){
+                    return true;
+                }
+            }
+            return flag;
         }
 
         // function to display hash table
+        // Used for debugging
         public void displayHash()
         {
             for (int i = 0; i < bucket; i++) {
                 System.out.print(i);
-                for (int x : table[i]) {
-                    System.out.print(" --> " + x);
+                for (DataPair x : table[i]) {
+                    System.out.print(" --> " + x.getKey() + ' ' + x.getVal());
                 }
                 System.out.println();
             }
