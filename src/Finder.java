@@ -12,15 +12,37 @@ import java.io.IOException;
 public class Finder {
 
     private static final String INVALID = "INVALID KEY";
-
+    public Hash mTable;
     public Finder() {}
 
     public void buildTable(BufferedReader br, int keyCol, int valCol) throws IOException {
+        if(br == null){
+            return;
+        }
+        /*
+        I modified a bit of the code from:
+        while loop:
+        https://www.geeksforgeeks.org/bufferedreader-readline-method-in-java-with-examples/
 
+         string split:
+         https://www.geeksforgeeks.org/split-string-java-examples/
+         */
+        String dataSTR;
+        mTable = new Hash();
+        while (br.ready()){
+            dataSTR = br.readLine();
+            String[] arrOfStr = dataSTR.split(",");
+            if((keyCol < arrOfStr.length) && (valCol < arrOfStr.length)){
+                mTable.insertItem(arrOfStr[keyCol], arrOfStr[valCol]);
+            }
+        }
         br.close();
     }
 
     public String query(String key){
+        if((mTable != null) && (mTable.contains(key, mTable.hashFunction(key)))){
+            return
+        }
         return INVALID;
     }
 }
