@@ -12,13 +12,22 @@ public class Hash {
         private final ArrayList<DataPair>[] table;
         private long p = 54321102419L;
         private int R = 256;
+        private String invalidSTR;
 
         public Hash()
         {
             this.table = new ArrayList[bucket];
         }
 
-        // Converts to hash
+    public String getInvalidSTR() {
+        return invalidSTR;
+    }
+
+    public void setInvalidSTR(String invalidSTR) {
+        this.invalidSTR = invalidSTR;
+    }
+
+    // Converts to hash
         public int hashFunction(String key){
             long h = 0;
             int index = 0;
@@ -29,6 +38,7 @@ public class Hash {
             Below code from the book Algorithms Sedgewick & Wayne, pg. 461.
              */
             index = (int) ((h & 0x7fffffff) % bucket);
+            //System.out.println("Index: " + index + " Key " + key);
             return index;
         }
 
@@ -48,15 +58,15 @@ public class Hash {
             DataPair pPair;
             int index = hashFunction(key);
             if(table[index] == null){
-                return null;
+                return getInvalidSTR();
             }
             for(int i = 0; i < table[index].size(); i++){
                 pPair = table[index].get(i);
-                if(pPair.getKey() == key){
+                if(key.equals(pPair.getKey())){
                     return pPair.getVal();
                 }
             }
-            return null;
+            return getInvalidSTR();
         }
 
         // function to display hash table

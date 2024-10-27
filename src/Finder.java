@@ -29,6 +29,7 @@ public class Finder {
          */
         String dataSTR;
         mTable = new Hash();
+        mTable.setInvalidSTR(INVALID);
         while (br.ready()){
             dataSTR = br.readLine();
             String[] arrOfStr = dataSTR.split(",");
