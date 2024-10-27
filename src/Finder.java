@@ -13,7 +13,14 @@ public class Finder {
 
     private static final String INVALID = "INVALID KEY";
     public Hash mTable;
-    public Finder() {}
+
+    public Finder() {
+        /*
+            Initializing the hash table.
+         */
+        mTable = new Hash();
+        mTable.setInvalidSTR(INVALID);
+    }
 
     public void buildTable(BufferedReader br, int keyCol, int valCol) throws IOException {
         if(br == null){
@@ -28,8 +35,6 @@ public class Finder {
          https://www.geeksforgeeks.org/split-string-java-examples/
          */
         String dataSTR;
-        mTable = new Hash();
-        mTable.setInvalidSTR(INVALID);
         while (br.ready()){
             dataSTR = br.readLine();
             String[] arrOfStr = dataSTR.split(",");
