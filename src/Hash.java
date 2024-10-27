@@ -6,23 +6,31 @@ https://www.geeksforgeeks.org/hash-table-data-structure/
 I have modified it to fit our problem set.
  */
 public class Hash {
-        // Number of buckets
-        private final int bucket = 1000000;
-        // Hash table of size bucket
-        private final ArrayList<DataPair>[] table;
-        private long p = 54321102419L;
-        private int R = 256;
-        private String invalidSTR;
+    // Number of buckets
+    private final int bucket = 1000000;
+    // Hash table of size bucket
+    private final ArrayList<DataPair>[] table;
+    private long p = 54321102419L;
+    private int R = 256;
+    private String invalidSTR;
 
-        public Hash()
-        {
-            this.table = new ArrayList[bucket];
-        }
+    /*
+        Default constructor that creates the empty hash table
+     */
+    public Hash()
+    {
+        this.table = new ArrayList[bucket];
+    }
 
+    /*
+        This is set to the finder class invalid key string.
+        The constant string set in the finder class can be used in this class.
+     */
     public String getInvalidSTR() {
         return invalidSTR;
     }
 
+    //
     public void setInvalidSTR(String invalidSTR) {
         this.invalidSTR = invalidSTR;
     }

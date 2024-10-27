@@ -42,9 +42,7 @@ public class Finder {
 
     public String query(String key){
         if(mTable != null){
-            if(mTable.getValue(key) != null){
-                return mTable.getValue(key);
-            }
+            return mTable.getValue(key);
         }
         return INVALID;
     }
