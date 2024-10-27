@@ -22,6 +22,9 @@ public class Finder {
         mTable.setInvalidSTR(INVALID);
     }
 
+    /*
+        Inserts new key value pairs from the buffered reader one line at a time.
+     */
     public void buildTable(BufferedReader br, int keyCol, int valCol) throws IOException {
         if(br == null){
             return;
@@ -45,6 +48,9 @@ public class Finder {
         br.close();
     }
 
+    /*
+        Searches the key in the hash table and returns the value.
+     */
     public String query(String key){
         if(mTable != null){
             return mTable.getValue(key);
