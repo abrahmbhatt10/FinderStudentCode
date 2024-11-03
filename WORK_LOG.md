@@ -7,7 +7,10 @@ Name: Agastya Brahmbhatt
 | October 26 | 4:00 - 4:30pm  |                                                                                                            I created a seperate hash class. This class uses arraylists of fixed size bucket. Bucket was set to 1 million based on the written handout. |
 | October 26 | 4:30 - 5:00 pm |                                                                                                                  I initially implemented a contains() function. I realized finder doesn't need contains(). I revised it to getValue() for a given key. |
 | October 26 | 5:00 - 5:30pm  | I tested the code. I printed out all the index values for given keys. I did this to see if they were distributed properly. I fixed the error in comparing two strings (using .equals() worked correctly in contrast to ==). All tests started to pass. |
-| November 3 | 2:30 - 3:00 pm |                                                                                                                                                                                                                                                        |
+| November 3 | 1:30 - 2:00 pm |                                                                                                                                                                       I duplicated the hash file. I renamed the older one. Its name is now "Old Hash". |
+| November 3 | 2:00 - 2:30pm  |                                                                                                                                            I declared the variables from the slides. I implemented the functions. I did all of this in the hash class. |
+| November 3 | 2:30 - 3:00 pm |                                                                                                      I brainstormed as to the initial table size. I decided to go with an initial table size of 5. I chose 5, as it was the value given in the slides. |
+| November 3 | 3:00 - 3:30 pm |                                       I did not want to lose the old key values when resizing. I wanted to reuse the hash without having to specify different table sizes. I decided to keep the class instance variables pointing to the latest ones. |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.
