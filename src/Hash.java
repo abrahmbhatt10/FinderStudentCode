@@ -96,12 +96,22 @@ public class Hash {
             Saves the value of the first empty space after linear probing.
          */
         int i;
+        /*
+            Skip through the values till you find a null.
+            If there is a duplicate match for key, then update the value.
+         */
         for(i = hash(key); keys[i] != null; i = ((i + 1) % tableSize)){
+            /*
+                This if statement will be true for duplicate key matches.
+             */
             if(keys[i].equals(key)){
                 values[i] = value;
                 return;
             }
         }
+        /*
+            Insert the new key values at location i.
+         */
         keys[i] = key;
         values[i] = value;
         n++;
@@ -109,6 +119,9 @@ public class Hash {
 
     // returns the value for a given string from the hashtable.
     public String get(String key){
+        /*
+            Compare the key value to find the correct position.
+         */
         for(int i = hash(key); keys[i] != null; i = (i + 1) % tableSize){
             if(keys[i].equals(key)){
                 return values[i];
