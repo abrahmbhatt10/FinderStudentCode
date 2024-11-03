@@ -1,18 +1,16 @@
 import java.util.ArrayList;
+
 /*
 The below Hash class code was taken from:
 https://www.geeksforgeeks.org/hash-table-data-structure/
 
 I have modified it to fit our problem set.
  */
-public class Hash {
-    // Instance Variables
-    private int DEFAULT_TABLE_SIZE = 5;
-    private int tableSize;
-    // Number of occupied entries
-    private int n;
-    private String[] keys;
-    private String[] values;
+public class OldHash {
+    // Number of buckets
+    private final int bucket = 1000000;
+    // Hash table of size bucket
+    private final ArrayList<DataPair>[] table;
     private long p = 54321102419L;
     private int R = 256;
     private String invalidSTR;
@@ -20,12 +18,9 @@ public class Hash {
     /*
         Default constructor that creates the empty hash table
      */
-    public Hash()
+    public OldHash()
     {
-        tableSize = DEFAULT_TABLE_SIZE;
-        keys = new String[tableSize];
-        values = new String[tableSize];
-        n = 0;
+        this.table = new ArrayList[bucket];
     }
 
     /*
@@ -41,28 +36,11 @@ public class Hash {
         this.invalidSTR = invalidSTR;
     }
 
-
-
-
-    public void resize(){
-        String[] oldKeys = keys;
-        String[] oldValues = values;
-        keys = new String[tableSize * 2];
-        values = new String[tableSize * 2];
-        tableSize *= 2;
-        for(int i = 0; i < oldKeys.length; i++){
-            if(oldKeys[i] != null){
-                add(oldKeys[i], oldValues[i]);
-            }
-        }
-    }
-
-
     /* Using the horner's hash method for strings
         Revise the return code to be % bucket size so
         the hash code is converted to the index for the hash table.
      */
-    public int hash(String key){
+    public int hashFunction(String key){
         long h = 0;
         int index = 0;
         for(int i = 0; i < key.length(); i++){
@@ -71,37 +49,50 @@ public class Hash {
         /*
            Below code from the book Algorithms Sedgewick & Wayne, pg. 461.
         */
-        index = (int) (h % tableSize);
+        index = (int) ((h & 0x7fffffff) % bucket);
+        //System.out.println("Index: " + index + " Key " + key);
         return index;
     }
 
     // Inserts the data pair object with key values into the hash table.
-    public void add(String key, String value)
+    public void insertItem(String key, String value)
     {
-        // Checks if the table is at least 1/2 full
-        if(n >= (tableSize / 2)){
-            resize();
-        }
         // get the hash index of key
-        int i;
-        for(i = hash(key); keys[i] != null; i = ((i + 1) % tableSize) ){
-            if(keys[i].equals(key)){
-                values[i] = value;
-                return;
-            }
+        int index = hashFunction(key);
+
+        if(table[index] == null){
+            table[index] = new ArrayList<DataPair>();
         }
-        keys[i] = key;
-        values[i] = value;
-        n++;
+        // insert key into hash table at that index
+        table[index].add(new DataPair(key, value));
     }
 
     // returns the value for a given string from the hashtable.
-    public String get(String key){
-        for(int i = hash(key); keys[i] != null; i = (i + 1) % tableSize){
-            if(keys[i].equals(key)){
-                return values[i];
+    public String getValue(String key){
+        DataPair pPair;
+        int index = hashFunction(key);
+        if(table[index] == null){
+            return getInvalidSTR();
+        }
+        for(int i = 0; i < table[index].size(); i++){
+            pPair = table[index].get(i);
+            if(key.equals(pPair.getKey())){
+                return pPair.getVal();
             }
         }
         return getInvalidSTR();
+    }
+
+    // function to display hash table
+    // Used for debugging
+    public void displayHash()
+    {
+        for (int i = 0; i < bucket; i++) {
+            System.out.print(i);
+            for (DataPair x : table[i]) {
+                System.out.print(" --> " + x.getKey() + ' ' + x.getVal());
+            }
+            System.out.println();
+        }
     }
 }

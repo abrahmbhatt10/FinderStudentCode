@@ -42,7 +42,7 @@ public class Finder {
             dataSTR = br.readLine();
             String[] arrOfStr = dataSTR.split(",");
             if((keyCol < arrOfStr.length) && (valCol < arrOfStr.length)){
-                mTable.insertItem(arrOfStr[keyCol], arrOfStr[valCol]);
+                mTable.add(arrOfStr[keyCol], arrOfStr[valCol]);
             }
         }
         br.close();
@@ -53,7 +53,7 @@ public class Finder {
      */
     public String query(String key){
         if(mTable != null){
-            return mTable.getValue(key);
+            return mTable.get(key);
         }
         return INVALID;
     }
