@@ -10,7 +10,7 @@ Name: Agastya Brahmbhatt
 | November 3 | 1:30 - 2:00 pm |                                                                                                                                                                       I duplicated the hash file. I renamed the older one. Its name is now "Old Hash". |
 | November 3 | 2:00 - 2:30pm  |                                                                                                                                            I declared the variables from the slides. I implemented the functions. I did all of this in the hash class. |
 | November 3 | 2:30 - 3:00 pm |                                                                                                      I brainstormed as to the initial table size. I decided to go with an initial table size of 5. I chose 5, as it was the value given in the slides. |
-| November 3 | 3:00 - 3:30 pm |                                       I did not want to lose the old key values when resizing. I wanted to reuse the hash without having to specify different table sizes. I decided to keep the class instance variables pointing to the latest ones. |
+| November 3 | 3:00 - 3:30 pm |       I did not want to lose the old key values when resizing. I wanted to reuse the hash without having to specify different table sizes. I decided to keep the class instance variables pointing to the latest ones. I tested, and all tests passed. |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.
