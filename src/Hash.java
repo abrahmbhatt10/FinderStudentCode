@@ -41,15 +41,25 @@ public class Hash {
         this.invalidSTR = invalidSTR;
     }
 
-
-
-
+    /*
+        Double the size of the keys and values array.
+     */
     public void resize(){
+        /*
+            Save the existing keys and values in oldKeys and oldValues;
+         */
         String[] oldKeys = keys;
         String[] oldValues = values;
+        /*
+            Create new arrays with double the size of the initial key and value arrays.
+         */
         keys = new String[tableSize * 2];
         values = new String[tableSize * 2];
+        // Updates value of table size based on this new doubled size.
         tableSize *= 2;
+        /*
+            Copy the old values into this new array.
+         */
         for(int i = 0; i < oldKeys.length; i++){
             if(oldKeys[i] != null){
                 add(oldKeys[i], oldValues[i]);
@@ -82,9 +92,11 @@ public class Hash {
         if(n >= (tableSize / 2)){
             resize();
         }
-        // get the hash index of key
+        /*
+            Saves the value of the first empty space after linear probing.
+         */
         int i;
-        for(i = hash(key); keys[i] != null; i = ((i + 1) % tableSize) ){
+        for(i = hash(key); keys[i] != null; i = ((i + 1) % tableSize)){
             if(keys[i].equals(key)){
                 values[i] = value;
                 return;
