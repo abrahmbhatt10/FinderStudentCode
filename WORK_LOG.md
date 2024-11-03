@@ -7,6 +7,7 @@ Name: Agastya Brahmbhatt
 | October 26 | 4:00 - 4:30pm  |                                                                                                            I created a seperate hash class. This class uses arraylists of fixed size bucket. Bucket was set to 1 million based on the written handout. |
 | October 26 | 4:30 - 5:00 pm |                                                                                                                  I initially implemented a contains() function. I realized finder doesn't need contains(). I revised it to getValue() for a given key. |
 | October 26 | 5:00 - 5:30pm  | I tested the code. I printed out all the index values for given keys. I did this to see if they were distributed properly. I fixed the error in comparing two strings (using .equals() worked correctly in contrast to ==). All tests started to pass. |
+| November 3 | 2:30 - 3:00 pm |                                                                                                                                                                                                                                                        |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.
