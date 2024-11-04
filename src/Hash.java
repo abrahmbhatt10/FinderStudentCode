@@ -86,6 +86,9 @@ public class Hash {
     }
 
     // Inserts the data pair object with key values into the hash table.
+    /*
+        I used some help from Algorithms: 4th Edition by Robert Sedgewick and Kevin Wayne
+     */
     public void add(String key, String value)
     {
         // Checks if the table is at least 1/2 full
@@ -118,6 +121,9 @@ public class Hash {
     }
 
     // returns the value for a given string from the hashtable.
+    /*
+        I used some help from Algorithms: 4th Edition by Robert Sedgewick and Kevin Wayne
+     */
     public String get(String key){
         /*
             Compare the key value to find the correct position.
