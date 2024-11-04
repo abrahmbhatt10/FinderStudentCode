@@ -57,6 +57,7 @@ public class Hash {
         values = new String[tableSize * 2];
         // Updates value of table size based on this new doubled size.
         tableSize *= 2;
+        n = 0;
         /*
             Copy the old values into this new array.
          */
